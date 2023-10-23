@@ -1,3 +1,24 @@
 <h1> Car Rental </h1>
 
+<%if @cars.any?%>
+<div class="row row-cols-auto px-2">
+	<% @cars.each do |car|%>
+	<div class="col-md-2" > 
+		<div class="card border-danger h-100 mb-1" style="width: 15rem;">
+		<%= link_to car_path(car) do%>
+			<%if car.photos.attached?%>					
+				<%= image_tag car.photos.first, width: 239, height: 239 %>
+			<%end%>				
+			  <div class="card-body">
+			    <p class="card-text"><%= car.car_name %></p>
+			  </div>
+		</div>
+		<%end%>
+	</div>
+	<%end%>	
+</div>	
+
+	
+<%end%>
+
 <%= link_to 'Cars', new_car_path(@cars)%>
