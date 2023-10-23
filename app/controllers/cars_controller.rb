@@ -1,5 +1,6 @@
 class CarsController < ApplicationController 
-
+	before_action :authenticate_user!
+	
 	before_action :set_car, only: [:show, :edit, :update, :destroy]
 
 	def index 
@@ -11,7 +12,7 @@ class CarsController < ApplicationController
 	end
 
 	def create
-		@car = Car.new(car_params)
+		@car = current_user.cars.create(car_params)
 
 		if @car.save
 			flash[:success] = "New car added!"

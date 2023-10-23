@@ -1,5 +1,16 @@
 <h1> Car Rental </h1>
 
+<% if user_signed_in? %>
+	<%= link_to 'Home',
+		new_car_path(@cars) %>
+		<br>
+	<%= link_to 'Log Out', destroy_user_session_path, data: {turbo_method: :delete} %>
+<%else%>
+	<%= link_to 'Sign in', new_user_session_path %>
+	<br>
+	<%= link_to 'Sign up', new_user_registration_path %>
+<%end%>
+<br>
 <%if @cars.any?%>
 <div class="row row-cols-auto px-2">
 	<% @cars.each do |car|%>
@@ -21,4 +32,4 @@
 	
 <%end%>
 
-<%= link_to 'Cars', new_car_path(@cars)%>
+<%= link_to 'Add Car', new_car_path(@cars)%>
