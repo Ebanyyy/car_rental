@@ -1,0 +1,29 @@
+<%= form_with model: @car do |f| %>
+	
+	<%= f.label :car_name%>
+	<p><%= f.text_field :car_name %></p>
+	
+	<%= f.label :photos%>
+	<p><%= f.file_field :photos, multiple: true %></p>
+	
+	<%= f.label :category%>
+	<p><%= f.collection_select(:category, Car::CATEGORIES, :to_s, :humanize, {include_blank: "Select Catagory"}) %></p>
+	
+	<%= f.label :capacity%>
+	<p><%= f.number_field :capacity %></p>
+	
+	<%= f.label :price%>
+	<p><%= f.text_field :price%></p>
+	
+	<%= f.label :available%>
+	<p><%= f.check_box :available%></p>
+	<br>
+
+	<% if @car.new_record? %>
+		<%= f.submit 'Create' %>
+	<%else%>
+		<%= f.submit 'Update' %>
+	<%end%>
+<%end%>
+
+<%= link_to 'Home', cars_path(@cars)%>

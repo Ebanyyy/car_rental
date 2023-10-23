@@ -1,0 +1,13 @@
+<h1>Car List</h1>
+
+<% if @cars.any? %>
+	<% @cars.each do |car| %>
+		<%= link_to car_path(car) do %>
+		<li><%= car.car_name %></li>
+		<%end%>
+	<%end%>
+<%else%>
+	<p>Not found. </p>
+<%end%>
+
+<button><%= link_to "Add New Car To List", new_car_path(@cars)%></button>
