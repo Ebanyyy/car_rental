@@ -1,13 +1,26 @@
+<br>
 <%= form_with model: @rental do |f|%>
-	<%= f.date_field :pick_up%>
-	<%= f.date_field :drop_off%>
+	
+	<h4><%= f.label :Pick_up_%></h4>
+	<%= f.label :Date%>
+	<p><%= f.date_field :pick_up%></p>
+	<%= f.label :Time%>
+	<p><%= f.time_field :pick_up%></p>
+	<%= f.label :Location%>
+	<p><%= f.text_field :pick_up_location%></p>
+	
 	<br>
-	<%= f.time_field :pick_up%>
-	<%= f.time_field :drop_off%>
+
+	<h4><%= f.label :Drop_off%></h4>
+	<%= f.label :Date%>
+	<p><%= f.date_field :drop_off%></p>
+	<%= f.label :Time%>
+	<p><%= f.time_field :drop_off%></p>
+	<%= f.label :Location%>
+	<p><%= f.text_field :drop_off_location%></p>
+
 	<br>
-	<%= f.text_field :pick_up_location%>
-	<%= f.text_field :drop_off_location%>
-	<br>
+
 	<%= f.hidden_field :car_id, value: @car.id%>
 	<%= f.submit 'Book Now'%>
 <%end%>
