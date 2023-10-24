@@ -10,6 +10,19 @@
 
 <p>Category: <%= @car.category %></p>
 <p>Capacity: <%= @car.capacity %></p>
+<p>Description: <%= @car.description%></p>
 <p>Price: RM <%= @car.price %> per day</p>
 
+
 <%=link_to 'Home', root_path%>
+<br>
+
+
+<% if current_user == @car.user %>
+	<%=link_to 'Edit', edit_car_path(@car)%>
+	<br>
+	<%= button_to 'Delete', car_path(@car), method: :delete,
+		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<%else%>
+	<%= link_to 'Rent a Car', new_rental_path(car_id: @car.id)%>
+<%end%>

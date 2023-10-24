@@ -1,0 +1,17 @@
+<%= form_with model: @rental do |f|%>
+	<%= f.date_field :pick_up%>
+	<%= f.date_field :drop_off%>
+	<br>
+	<%= f.time_field :pick_up%>
+	<%= f.time_field :drop_off%>
+	<br>
+	<%= f.text_field :pick_up_location%>
+	<%= f.text_field :drop_off_location%>
+	<br>
+	<%= f.hidden_field :car_id, value: @car.id%>
+	<%= f.submit 'Book Now'%>
+<%end%>
+
+<br>
+
+<button><%= link_to 'Home', cars_path(@cars)%></button>

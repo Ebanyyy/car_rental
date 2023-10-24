@@ -10,7 +10,9 @@
 	<br>
 	<%= link_to 'Sign up', new_user_registration_path %>
 <%end%>
+
 <br>
+
 <%if @cars.any?%>
 <div class="row row-cols-auto px-2">
 	<% @cars.each do |car|%>
@@ -29,8 +31,6 @@
 	</div>
 	<%end%>	
 </div>	
-
-	
 <%end%>
 
 <%= link_to 'Add Car', new_car_path(@cars)%>
