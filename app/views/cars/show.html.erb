@@ -15,7 +15,7 @@
 
 <br>
 
-<% if current_user == @car.user %>
+<% if current_user.is_superadmin? %>
 	<%=link_to 'Edit', edit_car_path(@car)%>
 	<br>
 	<%= button_to 'Delete', car_path(@car), method: :delete,
