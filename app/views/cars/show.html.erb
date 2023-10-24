@@ -1,8 +1,8 @@
 <%= @car.car_name %>
-
+<br>
 <% if @car.photos.attached? %>
 	<% @car.photos.each do |photo| %>
-		<%= image_tag photo%>
+		<%= image_tag photo, width: 400, height: 300%>
 	<%end%>
 <%else%>
 	<p>No photo found.</p>
@@ -12,4 +12,4 @@
 <p>Capacity: <%= @car.capacity %></p>
 <p>Price: RM <%= @car.price %> per day</p>
 
-link_to 'Home', root_path%>
+<%=link_to 'Home', root_path%>

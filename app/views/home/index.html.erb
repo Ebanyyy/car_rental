@@ -21,7 +21,8 @@
 				<%= image_tag car.photos.first, width: 239, height: 239 %>
 			<%end%>				
 			  <div class="card-body">
-			    <p class="card-text"><%= car.car_name %></p>
+			    <p class="card-text"><%= car.car_name %></p> 
+			    <p class="card-text"> RM <%= car.price %> per day</p>
 			  </div>
 		</div>
 		<%end%>
