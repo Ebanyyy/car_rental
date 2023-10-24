@@ -13,10 +13,7 @@
 <p>Description: <%= @car.description%></p>
 <p>Price: RM <%= @car.price %> per day</p>
 
-
-<%=link_to 'Home', root_path%>
 <br>
-
 
 <% if current_user == @car.user %>
 	<%=link_to 'Edit', edit_car_path(@car)%>
@@ -26,3 +23,23 @@
 <%else%>
 	<%= link_to 'Rent a Car', new_rental_path(car_id: @car.id)%>
 <%end%>
+
+<br>
+
+<h4>Reviews</h4>
+<%if @car.reviews.any?%>
+	<ul>
+		<% @car.reviews.each do |review|%>
+		<li>
+			<%= review.comment%>
+			<%= review.user.email%>
+			<%= review.created_at%>
+			<br>
+		</li>
+			<%end%>
+	</ul>
+<%else%>
+	<p>No review.</p>
+<%end%>
+<br>
+<%=link_to 'Home', root_path%>

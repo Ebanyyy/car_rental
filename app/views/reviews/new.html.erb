@@ -1,0 +1,17 @@
+<h3>Leave a review</h3>
+<br>
+<% @car_id%>
+<%= form_with model: @review do |f| %>
+	<% f.label :comment%>
+	<p><%= f.text_area :comment%></p>
+
+	<br>
+
+	<% f.label :rating%>
+	<p><%= f.range_field :rating, in: 1..5 %></p>
+
+	<br>
+
+	<%= f.hidden_field :car_id, calue: @car.id %>
+	<%= f.submit 'Create Review' %>
+<%end%>
