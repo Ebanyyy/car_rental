@@ -5,14 +5,11 @@
 	<br>
 
 	<% f.label :rating%>
-	<p><%= f.range_field :rating, in: 1..5 %></p>
+	<p><%= f.number_field :rating, in: 1..5 %></p>
 
 	<br>
 
 	<%= f.hidden_field :car_id, value: @car.id %>
 	<%= f.submit 'Create Review' %>
 <%end%>
-
-
-
 

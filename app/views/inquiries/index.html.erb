@@ -1,0 +1,8 @@
+<% @inquiries.each do |inquiry| %>
+	<h4><%= inquiry.email%></h4>
+	<%= link_to "View message", inquiry_path(inquiry), class: "btn btn-default" %>
+<%end%>
+
+<%= link_to "New Message", new_inquiry_path %>
+<br>
+<%= link_to "Home", root_path %>

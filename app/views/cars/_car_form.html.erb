@@ -22,11 +22,7 @@
 	<p><%= f.check_box :available%></p>
 	<br>
 
-	<% if @car.new_record? %>
-		<%= f.submit 'Create' %>
-	<%else%>
-		<%= f.submit 'Update' %>
-	<%end%>
+	<%= f.submit 'Submit' %>
 <%end%>
 
 <%= link_to 'Home', cars_path(@cars)%>

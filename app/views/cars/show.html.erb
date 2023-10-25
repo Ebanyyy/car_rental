@@ -1,4 +1,8 @@
-<%= @car.car_name %>
+<%=link_to 'Home', root_path%>
+
+<br>
+
+<h1><%= @car.car_name %></h1>
 <br>
 <% if @car.photos.attached? %>
 	<% @car.photos.each do |photo| %>
@@ -29,6 +33,7 @@
 <br>
 
 <h4>Reviews</h4>
+
 <%if @car.reviews.any?%>
 	<ul>
 		<% @car.reviews.each do |review|%>
@@ -38,6 +43,13 @@
 			<%= review.user.email%>
 			<%= review.created_at%>
 			<br>
+			<% if current_user.is_customer? %>
+				<%= link_to 'Edit', edit_car_review_path(@car, review)%>
+			<%else%>
+				<%= link_to 'Delete', car_review_path(@car, review), method: :delete,
+					data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+			<%end%>
+			<br>
 		</li>
 			<%end%>
 	</ul>
@@ -45,5 +57,5 @@
 	No review.
 <%end%>
 
+#edit button not working
 
-<%=link_to 'Home', root_path%>

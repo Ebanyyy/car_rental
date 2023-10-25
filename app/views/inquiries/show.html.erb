@@ -1,0 +1,7 @@
+<h5><%= @inquiry.email %></h5>
+<p><%= @inquiry.message_box %></p>
+
+<%= link_to "Edit", edit_inquiry_path(@inquiry) %>
+<%= button_to 'Delete Mesage', inquiry_path(@inquiry), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<br>
+<%= link_to "Message dashboard", inquiries_path %>
