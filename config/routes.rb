@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   
   root "home#index"
   resources :cars do
-     resources :reviews, only: [:show, :new]
+     resources :reviews
   end
+
   resources :rentals
 end

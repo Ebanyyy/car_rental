@@ -21,7 +21,9 @@
 	<%= button_to 'Delete', car_path(@car), method: :delete,
 		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
 <%else%>
-	<%= link_to 'Rent a Car', new_rental_path(car_id: @car.id)%>
+	<%= link_to 'Rent Car', new_rental_path(car_id: @car.id)%>
+	<br>
+	<%= link_to 'Add Review', new_car_review_path(car_id: @car.id)%>
 <%end%>
 
 <br>
@@ -32,6 +34,7 @@
 		<% @car.reviews.each do |review|%>
 		<li>
 			<%= review.comment%>
+			<p>Rating: <%= review.rating%>/5<p>
 			<%= review.user.email%>
 			<%= review.created_at%>
 			<br>
@@ -39,7 +42,8 @@
 			<%end%>
 	</ul>
 <%else%>
-	<p>No review.</p>
+	No review.
 <%end%>
-<br>
+
+
 <%=link_to 'Home', root_path%>
