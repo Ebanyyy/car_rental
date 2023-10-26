@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def edit
-		redirect_to car_path(@car) 
+		
 	end
 
 	def update
