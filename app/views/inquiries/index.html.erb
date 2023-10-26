@@ -1,6 +1,8 @@
 <% @inquiries.each do |inquiry| %>
-	<h4><%= inquiry.email%></h4>
-	<%= link_to "View message", inquiry_path(inquiry), class: "btn btn-default" %>
+	<div class="col-md-4">
+		<h4><%= inquiry.email%></h4>
+		<%= link_to "View message", inquiry_path(inquiry), class: "btn-custom" %>
+	</div>
 <%end%>
 
 <%= link_to "New Message", new_inquiry_path %>
