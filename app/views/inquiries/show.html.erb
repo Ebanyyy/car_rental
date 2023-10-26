@@ -1,6 +1,7 @@
-<h5><%= @inquiry.email %></h5>
-<p><%= @inquiry.message_box %></p>
+<h3>Posted by: <%= @inquiry.email %></h3> 
+<p><%= time_ago_in_words(@inquiry.created_at) %></p>
 
+<p><%= @inquiry.message_box %></p>
 
 
 <div class="d-flex gap-1">
