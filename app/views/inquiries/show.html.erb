@@ -1,5 +1,5 @@
-<h3>Posted by: <%= @inquiry.email %></h3> 
-<p><%= time_ago_in_words(@inquiry.created_at) %></p>
+<h3><%= @inquiry.title %></h3>
+<p>Posted by: <%= @inquiry.email %> <%= time_ago_in_words(@inquiry.created_at) %></p>
 
 <p><%= @inquiry.message_box %></p>
 

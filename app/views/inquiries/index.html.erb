@@ -1,8 +1,20 @@
 <% @inquiries.each do |inquiry| %>
-	<div class="col-md-4">
-		<h4><%= inquiry.email%></h4>
-		<%= link_to "View message", inquiry_path(inquiry), class: "btn-custom" %>
-	</div>
-<%end%>
+<br>
+<div class="col-md-4">
+ <div class="row">
+ 	 <div class="col-sm-6 mb-3 mb-sm-0">
+    	<div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title"><%= inquiry.title %></h5>
+	        <%= link_to "View message", inquiry_path(inquiry), class: "btn btn-primary" %>
+	      </div>
+    	</div>
+ 	 </div>
+ </div>
+</div>
+<% end %>
+
+<br>
 
 <%= link_to "New Message", new_inquiry_path %>
+

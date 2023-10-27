@@ -3,6 +3,7 @@
 <br>
 
 <% if @cars.any? %>
+<div class="position-relative">
 	<div class="row row-cols-auto px-2">
 		<% @cars.each do |car| %>
 			<div class="col-md-2" > 
@@ -19,7 +20,9 @@
 			</div>
 		<% end %>	
 	</div>	
+</div>
 <% end %>
+
 
 
 
