@@ -1,22 +1,18 @@
 <br>
 <%= form_with model: @rental do |f|%>
 	
-	<h4><%= f.label :Pick_up_%></h4>
-	<%= f.label :Date%>
-	<p><%= f.date_field :pick_up%></p>
-	<%= f.label :Time%>
-	<p><%= f.time_field :pick_up%></p>
-	<%= f.label :Location%>
+	<h4>Pick up</h4>
+	<%= f.label :pick_up %>
+	<p><%= f.datetime_field :pick_up%></p>
+	<%= f.label :pick_up_location%>
 	<p><%= f.text_field :pick_up_location%></p>
 	
 	<br>
 
-	<h4><%= f.label :Drop_off%></h4>
-	<%= f.label :Date%>
-	<p><%= f.date_field :drop_off%></p>
-	<%= f.label :Time%>
-	<p><%= f.time_field :drop_off%></p>
-	<%= f.label :Location%>
+	<h4>Drop off</h4>
+	<%= f.label :drop_off%>
+	<p><%= f.datetime_field :drop_off%></p>
+	<%= f.label :drop_off_location%>
 	<p><%= f.text_field :drop_off_location%></p>
 
 	<br>

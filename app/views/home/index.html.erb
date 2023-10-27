@@ -3,15 +3,15 @@
 <br>
 
 <% if @cars.any? %>
-<div class="position-relative">
-	<div class="row row-cols-auto px-2">
+<div class="container text-center">
+	<div class="row align-items-start">
 		<% @cars.each do |car| %>
-			<div class="col-md-2" > 
-				<div class="card border-danger h-100 mb-1" style="width: 15rem;">
+			<div class="col-md-3" > 
+				<div class="card border-danger h-100 mb-2">
 					<% if car.photos.attached? %>					
-						<%= image_tag car.photos.first, width: 239, height: 239 %>
+						<%= image_tag car.photos.first, class: "img-fluid" %>
 					<% end %>				
-					 <div class="card-body">
+					 <div class="card-body h-100">
 					    <p class="card-text"><%= car.car_name %></p> 
 					    <p class="card-text"> RM <%= car.price %> per day</p>
 					    <%= link_to 'Click Here', car_path(car), class: 'btn btn-primary' %>
@@ -23,8 +23,7 @@
 </div>
 <% end %>
 
-
-
+<br>
 
 <% if user_signed_in? && current_user.is_superadmin? %>
 	<%= link_to 'Add Car', new_car_path(@cars)%>

@@ -28,7 +28,7 @@ class RentalsController < ApplicationController
 
 	private
 		def rental_params
-			params.require(:rental).permit(:pick_up, :drop_off)
+			params.require(:rental).permit(:pick_up, :drop_off, :pick_up_location, :drop_off_location)
 		end
 
 		def available_datetime?(pick_up_datetime, drop_off_datetime, car)
