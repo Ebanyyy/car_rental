@@ -1,5 +1,9 @@
-class RentalsController < ApplicationController 
+class Customer::RentalsController < ApplicationController 
 	before_action :authenticate_user!
+
+	def show
+		@rental = Rental.find(params[:id])
+	end
 
 	def new
 		@car = Car.find_by(id: params[:car_id])
@@ -13,17 +17,13 @@ class RentalsController < ApplicationController
 
 		if available_datetime?(@rental.pick_up, @rental.drop_off, @car)
 			if @rental.save
-				redirect_to rental_path(@rental), notice: "Booking success!"
+				redirect_to customer_rental_path(@rental), notice: "Booking success!"
 			else
 				render :new
 			end
 		else
 			redirect_to car_path(@car), notice: "Booking failed"
 		end
-	end
-
-	def show
-		@rental = Rental.find(params[:id])
 	end
 
 	private

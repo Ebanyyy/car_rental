@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
   enum :role, { customer: 0, superadmin: 1 }
 
-  def is_superadmin?
-    role == 'superadmin'
+  def is_admin?
+    role == 'admin'
   end
 
   def is_customer?

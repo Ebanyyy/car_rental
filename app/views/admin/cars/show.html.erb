@@ -37,16 +37,12 @@
 
 <br>
 
-<% if user_signed_in? && current_user.is_superadmin? %>
+<% unless user_signed_in? %>
 	<%=link_to 'Edit', edit_car_path(@car)%>
 	<br>
 	<%= button_to 'Delete', car_path(@car), method: :delete,
 		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-<%else%>
-	<%= link_to 'Rent Car', new_rental_path(car_id: @car.id)%>
-	<br>
-	<%= link_to 'Add Review', new_car_review_path(car_id: @car.id)%>
-<%end%>
+<% end %>
 
 <br>
 
@@ -61,12 +57,10 @@
 			<%= review.user.email%>
 			<%= review.created_at%>
 			<br>
-			<% if current_user.is_customer? %>
-				<%= link_to 'Edit', edit_car_review_path(@car, review)%>
-			<%else%>
+			<% unless user_signed_in? %>
 				<%= link_to 'Delete', car_review_path(@car, review), method: :delete,
 					data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-			<%end%>
+			<% end %>
 			<br>
 		</li>
 			<%end%>

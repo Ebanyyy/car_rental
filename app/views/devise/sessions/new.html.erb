@@ -1,0 +1,36 @@
+  <body class="text-center">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<main class="form-signin">
+  <form>
+    <%= image_tag("Picture1.png")%>
+    <h1 class="h2 mb-3 fw-normal">Please sign in</h1>
+
+  
+    <div class="form-floating">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+    </div>
+
+    <div class="form-floating">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+    </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+  <% end %>
+
+    <div class="actions">
+      <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    </div>
+
+  </form>
+
+</main>
+
+<% end %>
+<%= render "devise/shared/links" %>
+
+  </body>

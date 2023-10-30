@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+  root 'customer/home#index'
+
   devise_for :users
-  
-  root "home#index"
-  resources :cars do
-     resources :reviews
+
+  namespace :admin do 
+    resources :rentals
+    resources :cars 
+    resources :inquiries
   end
 
-  resources :rentals
-  resources :inquiries
+  namespace :customer do
+
+    resources :cars do
+       resources :reviews
+    end
+
+    resources :rentals
+    resources :inquiries
+  end
 end

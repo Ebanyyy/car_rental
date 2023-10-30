@@ -1,0 +1,20 @@
+<% @inquiries.each do |inquiry| %>
+<br>
+<div class="col-md-4">
+ <div class="row">
+ 	 <div class="col-sm-6 mb-3 mb-sm-0">
+    	<div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title"><%= inquiry.title %></h5>
+	        <%= link_to "View message", customer_inquiry_path(inquiry), class: "btn btn-primary" %>
+	      </div>
+    	</div>
+ 	 </div>
+ </div>
+</div>
+<% end %>
+
+<br>
+
+<%= link_to "New Message", new_customer_inquiry_path %>
+

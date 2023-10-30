@@ -5,13 +5,13 @@
 
 
 <div class="d-flex gap-1">
-<%= link_to edit_inquiry_path(@inquiry) do %>
+<%= link_to edit_customer_inquiry_path(@inquiry) do %>
 	<i class="fa-regular fa-pen-to-square"></i>
 <% end %>
 
-<%= link_to inquiry_path(@inquiry), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+<%= link_to customer_inquiry_path(@inquiry), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
 	<i class="fa-regular fa-trash-can"></i>
 <% end %>
 </div>
 
-<%= link_to "Message dashboard", inquiries_path %>
+<%= link_to "Message dashboard", customer_inquiries_path %>

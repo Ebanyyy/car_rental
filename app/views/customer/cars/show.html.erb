@@ -1,0 +1,76 @@
+<h1><%= @car.car_name %></h1>
+<br>
+
+<% if @car.photos.attached? %>
+	<div id="carouselExampleCaptions" class="carousel slide">
+	  <div class="carousel-indicators">
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+	    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	  </div>
+	  <div class="carousel-inner">
+	  	<% @car.photos.each do |photo| %>
+		    <div class="carousel-item active">
+		      <%= image_tag photo, class: "img-fluid d-block w-100"%>
+		      <div class="carousel-caption d-none d-md-block">
+		        <h5>First slide label</h5>
+		        <p>Some representative placeholder content for the first slide.</p>
+		      </div>
+		    </div>
+	    <% end %>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	  </button>
+	</div>
+ <% end %>
+
+<p>Category: <%= @car.category %></p>
+<p>Capacity: <%= @car.capacity %></p>
+<p>Description: <%= @car.description%></p>
+<p>Price: RM <%= @car.price %> per day</p>
+
+<br>
+
+<% if user_signed_in? && current_user.is_admin? %>
+	<button type="button" class="btn btn-light"
+	        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+	  <%= link_to 'Rent Car', new_customer_rental_path(car_id: @car.id)%>
+	</button>
+		<br>
+	<%= link_to 'Add Review', new_customer_car_review_path(car_id: @car.id)%>
+<%else%>
+	<%= link_to customer_cars_path(@cars)%>
+<%end%>
+
+<br>
+
+<h4>Reviews</h4>
+
+<%if @car.reviews.any?%>
+	<ul>
+		<% @car.reviews.each do |review|%>
+		<li>
+			<%= review.comment%>
+			<p>Rating: <%= review.rating%>/5<p>
+			<%= review.user.email%>
+			<%= review.created_at%>
+			<br>
+			<% if current_user.is_customer? %>
+				<%= link_to 'Edit', edit_customer_car_review_path(@car, review)%>
+			<% else %>
+				<%= link_to 'Delete', customer_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+			<% end %>
+			<br>
+		</li>
+			<% end %>
+	</ul>
+<%else%>
+	No review.
+<%end%>
+

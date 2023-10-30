@@ -1,4 +1,4 @@
-class InquiriesController < ApplicationController
+class Customer::InquiriesController < ApplicationController
 	before_action :find_inquiry, only: [:show, :edit, :update, :destroy]
 
 
@@ -28,7 +28,7 @@ class InquiriesController < ApplicationController
 
 	def update
 		if @inquiry.update(inquiry_params)
-			redirect_to inquiry_params
+			redirect_to customer_inquiry_params
 		else
 			render 'edit'
 		end
@@ -36,7 +36,7 @@ class InquiriesController < ApplicationController
 
 	def destroy
 		@inquiry.destroy
-		redirect_to inquiries_path
+		redirect_to customer_inquiries_path
 	end
 
 	private

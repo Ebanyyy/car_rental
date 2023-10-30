@@ -1,6 +1,5 @@
-class CarsController < ApplicationController 
-	# before_action :authenticate_user!
-	
+class Admin::CarsController < BaseController 
+	#before_action :authenticate_user!
 	before_action :set_car, only: [:show, :edit, :update, :destroy]
 
 	def index 
@@ -16,7 +15,7 @@ class CarsController < ApplicationController
 
 		if @car.save
 			flash[:success] = "New car added!"
-			redirect_to @car
+			redirect_to admin_cars_path(@cars)
 		else
 			render :new 
 		end
@@ -32,7 +31,7 @@ class CarsController < ApplicationController
 		@car.update(car_params)
 
 		if @car.save
-			redirect_to car_path(@car)
+			redirect_to admin_car_path(@car), notice: 'Successfully updated.'
 		else
 			render :edit 
 		end
