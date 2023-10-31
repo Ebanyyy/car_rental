@@ -37,7 +37,7 @@
 
 <br>
 
-<% if user_signed_in? && current_user.is_admin? %>
+<% if user_signed_in? && current_user.is_customer? %>
 	<button type="button" class="btn btn-light"
 	        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
 	  <%= link_to 'Rent Car', new_customer_rental_path(car_id: @car.id)%>
@@ -45,7 +45,7 @@
 		<br>
 	<%= link_to 'Add Review', new_customer_car_review_path(car_id: @car.id)%>
 <%else%>
-	<%= link_to customer_cars_path(@cars)%>
+	<%= link_to 'Back', admin_cars_path(@cars)%>
 <%end%>
 
 <br>
@@ -64,7 +64,7 @@
 			<% if current_user.is_customer? %>
 				<%= link_to 'Edit', edit_customer_car_review_path(@car, review)%>
 			<% else %>
-				<%= link_to 'Delete', customer_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+				<%= link_to 'Delete', customer_car_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 			<% end %>
 			<br>
 		</li>

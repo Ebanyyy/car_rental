@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :rentals, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  enum :role, { customer: 0, superadmin: 1 }
+  enum :role, { customer: 0, admin: 1 }
 
   def is_admin?
     role == 'admin'
