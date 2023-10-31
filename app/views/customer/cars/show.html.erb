@@ -37,7 +37,7 @@
 
 <br>
 
-<% if user_signed_in? && current_user.is_customer? %>
+<% if user_signed_in? %>
 	<button type="button" class="btn btn-light"
 	        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
 	  <%= link_to 'Rent Car', new_customer_rental_path(car_id: @car.id)%>

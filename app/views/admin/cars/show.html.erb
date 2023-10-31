@@ -37,10 +37,10 @@
 
 <br>
 
-<% unless user_signed_in? %>
-	<%=link_to 'Edit', edit_car_path(@car)%>
+<% if user_signed_in? && current_user.is_admin? %>
+	<%=link_to 'Edit', edit_admin_car_path(@car)%>
 	<br>
-	<%= button_to 'Delete', car_path(@car), method: :delete,
+	<%= button_to 'Delete', admin_car_path(@car), method: :delete,
 		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
 <% end %>
 

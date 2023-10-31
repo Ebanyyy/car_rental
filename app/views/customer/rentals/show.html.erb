@@ -1,3 +1,25 @@
+<div class="container">
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">Car</th>
+	      <th scope="col">Pickup</th>
+	      <th scope="col">Dropoff</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td><%= @rental.car.car_name%></th>
+	      <td><%= @rental.pick_up%></td>
+	      <td><%= @rental.drop_off%></td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+
+
+
+
 <h2><%= @rental.car.car_name%></h2>
 
 <h5>Pick up</h5>

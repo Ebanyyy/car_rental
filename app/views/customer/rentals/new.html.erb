@@ -1,5 +1,5 @@
 <br>
-<%= form_with model: @rental do |f|%>
+<%= form_with model: [:customer, @rental] do |f|%>
 	
 	<h4>Pick up</h4>
 	<%= f.label :pick_up %>
