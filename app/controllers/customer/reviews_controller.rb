@@ -17,7 +17,7 @@ class Customer::ReviewsController < ApplicationController
 		@review.user_id = current_user.id
 
 		if @review.save
-			redirect_to car_path(@car)
+			redirect_to customer_car_path(@car)
 		else
 			render 'new'
 		end
