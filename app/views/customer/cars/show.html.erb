@@ -63,7 +63,7 @@
 			<br>
 			<% if current_user.is_customer? %>
 				<%= link_to 'Edit', edit_customer_car_review_path(@car, review)%>
-			<% else %>
+			<br>
 				<%= link_to 'Delete', customer_car_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 			<% end %>
 			<br>

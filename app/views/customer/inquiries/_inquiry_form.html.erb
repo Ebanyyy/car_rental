@@ -1,4 +1,4 @@
-<%= form_with model: @inquiry do |f| %>
+<%= form_with model: [:customer, @inquiry] do |f|%>
 	
 	<%= f.label :title%>
 	<p><%= f.text_field :title %></p>
