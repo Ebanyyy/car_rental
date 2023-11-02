@@ -13,6 +13,8 @@ gem "stimulus-rails"
 gem "sassc-rails"
 gem "bootstrap", "~> 5.3.2"
 gem "autoprefixer-rails"
+gem "braintree"
+gem "libxml-ruby"
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false

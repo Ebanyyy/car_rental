@@ -5,6 +5,8 @@
 	      <th scope="col">Car</th>
 	      <th scope="col">Pickup</th>
 	      <th scope="col">Dropoff</th>
+	      <th scope="col">Status</th>
+
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -12,6 +14,7 @@
 	      <td><%= @rental.car.car_name%></th>
 	      <td><%= @rental.pick_up%></td>
 	      <td><%= @rental.drop_off%></td>
+	      <td><%= button_to "Cancel", customer_rental_path(@rental, status: "cancel"), method: :put, class: "btn btn-primary"%></td>
 	    </tr>
 	  </tbody>
 	</table>
@@ -35,6 +38,6 @@
 <h5>Rental Details</h5>
 <p>Duration: <%= @rental.duration%></p>
 <p>Total price: <%= @rental.total_price%></p>
-<p></p>
+<p>Status: <%= @rental.status%>
 
 

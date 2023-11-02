@@ -26,9 +26,17 @@ class Customer::RentalsController < ApplicationController
 		end
 	end
 
+	def update
+		@rental = Rental.find(params[:id])
+		if params[:status] == "cancel"
+			@rental.update(status: "cancel")
+			redirect_back(fallback_location: root_path)
+		end
+	end
+
 	private
 		def rental_params
-			params.require(:rental).permit(:pick_up, :drop_off, :pick_up_location, :drop_off_location)
+			params.require(:rental).permit(:pick_up, :drop_off, :pick_up_location, :drop_off_location, :status)
 		end
 
 		def available_datetime?(pick_up_datetime, drop_off_datetime, car)
