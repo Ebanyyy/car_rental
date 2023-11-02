@@ -1,6 +1,5 @@
 class Customer::HomeController < ApplicationController 
-	# before_action :authenticate_user!
-	
+
 	def index
 		if params[:car_name]
 			@cars = Car.where("car_name LIKE ? OR description LIKE ?", 

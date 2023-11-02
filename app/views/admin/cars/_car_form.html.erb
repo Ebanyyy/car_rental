@@ -12,8 +12,8 @@
 	<%= f.label :capacity%>
 	<p><%= f.number_field :capacity %></p>
 
-	<%= f.label :description%>
-	<p><%= f.text_area :description%></p>
+	<%= f.label :description, class:"form-label"%>
+	<p><%= f.text_area :description, class:"form-control" %></p>
 	
 	<%= f.label :price%>
 	<p><%= f.text_field :price%></p>
@@ -23,4 +23,5 @@
 	<br>
 
 	<%= f.submit 'Submit' %>
+
 <%end%>

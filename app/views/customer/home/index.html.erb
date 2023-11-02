@@ -1,7 +1,12 @@
 
-
 <section class="container">
 	<h1>Available Cars</h1>
+		<form action="<%= customer_cars_path %>"><i class="fa-solid fa-magnifying-glass"></i>
+			<input type="text" placeholder="Search for Car" name="car_name">
+			<br>
+			<button type= "Search">Search</button>
+		</form>
+		
 	<section class="row">
 		<% if @cars.any? %>
 			<% @cars.each do |car| %>

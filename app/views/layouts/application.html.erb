@@ -51,7 +51,7 @@
           <div class="d-flex gap-3">
             <%=link_to image_tag('Picture1.png', height: 80), root_path, class: 'navbar-brand d-flex align-items-center' %>  
             <div class="nav-item d-flex gap-3 align-items-center">
-              <%= link_to 'BOOK HERE', new_customer_rental_path(@cars) %>
+              <%= link_to 'BOOK HERE', new_customer_rental_path(@cars), class: 'no-underline' %>
               <a class="nav-link" href="#">HOW TO BOOK</a>
               <a class="nav-link" href="#">ABOUT</a>
             </div>
