@@ -1,10 +1,19 @@
-<%= form_with model: [:customer, @inquiry] do |f|%>
-	
-	<%= f.label :title%>
-	<p><%= f.text_field :title %></p>
-	
-	<%= f.label :message_box%>
-	<p><%= f.text_area :message_box %></p>
-	
-	<%= f.submit 'Send' %>
-<%end%>
+<section class="container">
+	<h3>New Message</h3>
+	<br>
+	<%= form_with model: [:customer, @inquiry] do |f|%>
+	<div class="mb-3">
+		<%= f.label :title, class:"form-label" %>
+		<p><%= f.text_field :title, class:"form-control", placeholder:"Title" %></p>
+	</div>
+
+	<div class="mb-3">
+		<%= f.label :message_box, class:"form-label" %>
+		<p><%= f.text_area :message_box, class:"form-control", rows:"3" %></p>
+		<br>
+		<%= f.submit 'Send' %>
+	</div>
+	<%end%>
+</section>
+
+

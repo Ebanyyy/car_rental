@@ -22,7 +22,7 @@ class Customer::RentalsController < ApplicationController
 				render :new
 			end
 		else
-			redirect_to car_path(@car), notice: "Booking failed"
+			redirect_to customer_car_path(@car), notice: "Booking failed"
 		end
 	end
 

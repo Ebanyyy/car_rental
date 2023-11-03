@@ -1,5 +1,5 @@
 class Admin::CarsController < BaseController 
-	#before_action :authenticate_user!
+	# before_action :authenticate_user!
 	before_action :set_car, only: [:show, :edit, :update, :destroy]
 
 	def index 

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
 
   namespace :customer do
-
     resources :cars do
        resources :reviews
     end

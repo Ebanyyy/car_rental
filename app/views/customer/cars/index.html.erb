@@ -1,29 +1,28 @@
-<center><h1>Car List</h1></center>
-<form action="<%= customer_cars_path %>"><i class="fa-solid fa-magnifying-glass"></i>
-		<input type="text" placeholder="Search for Car" name="car_name">
-		<br>
-		<button type= "Search">Search</button>
-</form>
-<% if @cars.any? %>
-<center><div class="container text-center">
-	<div class="row align-items-start">
-		<% @cars.each do |car| %>
-			<div class="col-md-3" > 
-				<div class="card border border-5 h-100 mb-2">
-					<% if car.photos.attached? %>					
-						<%= image_tag car.photos.first, class: "img-fluid" %>
-					<% end %>				
-					 <div class="card-body h-100">
-					    <p class="card-text"><%= car.car_name %></p> 
-					    <p class="card-text"> RM <%= car.price %> per day</p>
-					    <%= link_to 'Click Here', customer_car_path(car), class: 'btn btn-primary' %>
-					 </div>
-				</div>
-			</div>
-		<% end %>	
-	</div>	
-</div>
-<%else%>
+<section class="container">
+<h1>Car List</h1>
+
+
+<div class="row">
+	<% if @cars.any? %>
+			<% @cars.each do |car| %>
+				<section class="col-md-4 mb-3">
+					<section class="card h-100">
+						<% if car.photos.attached? %>					
+							<%= image_tag car.photos.first, height: 300 %>
+						<% end %>				
+						<section class="card-body">
+					    	<p class="card-text"><%= car.car_name %></p> 
+					    	<p class="card-text"> RM <%= car.price %> per day</p>
+					    	<%= link_to 'See Details', customer_car_path(car), class: 'btn btn-primary' %>	
+
+							<%# add rental path here%>
+
+						</section>
+					</section>
+				</section>
+		<% end %>
+	<%else%>
 	<p>Not found. </p>
-</center>
+
 <% end %>
+</section>

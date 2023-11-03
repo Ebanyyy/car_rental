@@ -1,12 +1,6 @@
-
 <section class="container">
 	<h1>Available Cars</h1>
-		<form action="<%= customer_cars_path %>"><i class="fa-solid fa-magnifying-glass"></i>
-			<input type="text" placeholder="Search for Car" name="car_name">
-			<br>
-			<button type= "Search">Search</button>
-		</form>
-		
+
 	<section class="row">
 		<% if @cars.any? %>
 			<% @cars.each do |car| %>
@@ -18,13 +12,15 @@
 						<section class="card-body">
 					    	<p class="card-text"><%= car.car_name %></p> 
 					    	<p class="card-text"> RM <%= car.price %> per day</p>
-					    	<%= link_to 'Click Here', customer_car_path(car), class: 'btn btn-primary' %>							
+					    	<%= link_to 'See Details', customer_car_path(car), class: 'btn btn-primary' %>					
+
+					    	<%# add rental path here%>
+
 						</section>
 					</section>
 				</section>
 			<% end %>
 		<% end %>
 	</section>
-	<%= link_to 'Ask Us', customer_inquiries_path %>
 </section>
 

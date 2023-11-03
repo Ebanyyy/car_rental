@@ -51,11 +51,16 @@
           <div class="d-flex gap-3">
             <%=link_to image_tag('Picture1.png', height: 80), root_path, class: 'navbar-brand d-flex align-items-center' %>  
             <div class="nav-item d-flex gap-3 align-items-center">
-              <%= link_to 'BOOK HERE', new_customer_rental_path(@cars), class: 'no-underline' %>
               <a class="nav-link" href="#">HOW TO BOOK</a>
               <a class="nav-link" href="#">ABOUT</a>
+              <%= link_to 'DIRECT MESSAGE', customer_inquiries_path, class: 'no-underline' %>
+              <form action="<%= customer_cars_path %>">
+                <input type="text" placeholder="Search for Car" name="car_name">
+                <button type= "Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
             </div>
           </div>
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
