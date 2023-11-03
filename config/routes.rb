@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'transactions/new'
   root 'customer/home#index'
 
   devise_for :users
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
 
     resources :rentals
     resources :inquiries
+    resources :transactions, only: [:new, :create]
   end
 end
