@@ -24,6 +24,7 @@ class Customer::InquiriesController < ApplicationController
 	end
 
 	def edit
+		
 	end
 
 	def update

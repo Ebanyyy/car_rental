@@ -2,12 +2,18 @@
 	<h3>New Message</h3>
 	<br>
 	<%= form_with model: [:customer, @inquiry] do |f|%>
-	<div class="mb-3">
+
+	<div class="mx-5">
+		<%= f.label :email, class:"form-label" %>
+		<p><%= f.text_field :email, class:"form-control", placeholder:"Email" %></p>
+	</div>
+
+	<div class="mx-5">
 		<%= f.label :title, class:"form-label" %>
 		<p><%= f.text_field :title, class:"form-control", placeholder:"Title" %></p>
 	</div>
 
-	<div class="mb-3">
+	<div class="mx-5">
 		<%= f.label :message_box, class:"form-label" %>
 		<p><%= f.text_area :message_box, class:"form-control", rows:"3" %></p>
 		<br>

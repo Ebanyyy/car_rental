@@ -11,17 +11,9 @@ class Admin::InquiriesController < BaseController
 	def edit
 	end
 
-	def update
-		if @inquiry.update(inquiry_params)
-			redirect_to inquiry_params
-		else
-			render 'edit'
-		end
-	end
-
 	def destroy
 		@inquiry.destroy
-		redirect_to inquiries_path
+		redirect_to admin_inquiries_path
 	end
 
 	private

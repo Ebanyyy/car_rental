@@ -1,4 +1,4 @@
-<h3><%= @inquiry.title %></h3>
+<h3>Subject: <%= @inquiry.title %></h3>
 <p>Posted by: <%= @inquiry.email %> <%= time_ago_in_words(@inquiry.created_at) %></p>
 
 <p><%= @inquiry.message_box %></p>
@@ -13,7 +13,3 @@
 	<i class="fa-regular fa-trash-can"></i>
 <% end %>
 </div>
-
-<%= link_to "Message dashboard", customer_inquiries_path %>
-
-

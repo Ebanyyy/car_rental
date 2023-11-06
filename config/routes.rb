@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'transactions/new'
+  get 'howtobook', to: 'customer/home#howtobook'
+  get 'about', to: 'customer/home#about'
+
   root 'customer/home#index'
 
   devise_for :users

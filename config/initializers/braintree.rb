@@ -1,6 +1,6 @@
 gateway = Braintree::Gateway.new(
-	:environment=>:sandbox,
-	:merchant_id=>Rails.application.credentials.dig(:braintree, :merchant_id,
-	:public_key=>Rails.application.credentials.dig(:braintree, :public_key,
-	:private_key=>Rails.application.credentials.dig(:braintree, :private_key
+  :environment => :sandbox,
+  :merchant_id => 'pxwg9rygz7qhrpy2',
+  :public_key => '2tysx9hs82ckkvdh',
+  :private_key => 'eb0507b5a40f28cea9f027e81fb66d9d',
 )

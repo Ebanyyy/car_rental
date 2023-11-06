@@ -1,4 +1,5 @@
 <%= form_with model: [:customer, @car, @review] do |f| %>
+
 	<%= f.label :comment%>
 	<p><%= f.text_area :comment%></p>
 
@@ -13,3 +14,36 @@
 	<%= f.submit %>
 <% end %>
 
+<section class="container">
+	<form>
+	<%= form_with model: [:customer, @car, @review] do |f| %>
+
+	  <div class="field form-group">
+	  <%= f.label :rating, "What's your overall rating?" %>
+	    <div class="rating">
+	      <%= f.collection_radio_buttons(:rating, [[5],[4],[3],[2],[1]], :first, :last) do |star| %>
+	        <%= star.radio_button %>
+	        <%= star.label(class: "text-white") %>
+	      <% end %>
+	    </div>
+	  </div>
+
+	  <br>
+
+	  <div class="field form-group">
+	    <%= f.label :comment, "Leave a review" %>
+	    <%= f.text_area :comment, class: "form-control",
+	                        placeholder: "Review..." %>
+	  </div>
+
+	  <br>
+
+	  <!-- Submit button -->
+	  <%= f.hidden_field :car_id, value: @car.id %>
+	  <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+
+	<% end %>
+	</form>
+
+
+</section>

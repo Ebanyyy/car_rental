@@ -37,8 +37,6 @@
                     <li><%= link_to 'Admin', admin_cars_path%></li>
                   <% end %>
 
-                  <%# remove admin button in customer acc%>
-
                 <% else %>
                   <li><%= link_to 'Sign in', new_user_session_path %></li>
                   <br>
@@ -54,9 +52,9 @@
           <div class="d-flex gap-3">
             <%=link_to image_tag('Picture1.png', height: 80), root_path, class: 'navbar-brand d-flex align-items-center' %>  
             <div class="nav-item d-flex gap-3 align-items-center">
-              <a class="nav-link" href="#">HOW TO BOOK</a>
-              <a class="nav-link" href="#">ABOUT</a>
-              <%= link_to 'DIRECT MESSAGE', customer_inquiries_path, class: 'no-underline' %>
+              <%= link_to 'HOW TO BOOK', howtobook_path, class: 'no-underline' %>
+              <%= link_to 'ABOUT', about_path, class: 'no-underline' %>
+              <%= link_to 'DIRECT MESSAGE', new_customer_inquiry_path, class: 'no-underline' %>
               <form action="<%= customer_cars_path %>">
                 <input type="text" placeholder="Search for Car" name="car_name">
                 <button type= "Search"><i class="fa-solid fa-magnifying-glass"></i></button>
