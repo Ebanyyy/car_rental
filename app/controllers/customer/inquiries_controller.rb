@@ -17,7 +17,7 @@ class Customer::InquiriesController < ApplicationController
 		@inquiry = Inquiry.new(inquiry_params)
 
 		if @inquiry.save
-			redirect_to customer_inquiries_path
+			redirect_to customer_inquiry_path(@inquiry)
 		else
 			render 'new'
 		end

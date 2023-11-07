@@ -1,15 +1,13 @@
-<h3>Subject: <%= @inquiry.title %></h3>
-<p>Posted by: <%= @inquiry.email %> <%= time_ago_in_words(@inquiry.created_at) %></p>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Subject: <%= @inquiry.title %></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Posted by: <%= @inquiry.email %> <%= time_ago_in_words(@inquiry.created_at) %></h6>
+    <p class="card-text"><%= @inquiry.message_box %></p>
+	<div class="d-flex gap-1">
 
-<p><%= @inquiry.message_box %></p>
-
-
-<div class="d-flex gap-1">
-<%= link_to edit_customer_inquiry_path(@inquiry) do %>
-	<i class="fa-regular fa-pen-to-square"></i>
-<% end %>
-
-<%= link_to customer_inquiry_path(@inquiry), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-	<i class="fa-regular fa-trash-can"></i>
-<% end %>
+		<%= link_to admin_inquiry_path(@inquiry), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+			<i class="fa-regular fa-trash-can"></i>
+		<% end %>
+	</div>
+  </div>
 </div>

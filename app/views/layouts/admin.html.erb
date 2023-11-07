@@ -132,6 +132,7 @@
 
     <div class="container-fluid">
       <div class="row">
+
         <!-- Sidebar -->
         <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
           <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
@@ -165,6 +166,10 @@
                     Add Car
                   <% end %>
                 </li>
+                <form action="<%= admin_cars_path %>">
+                  <input type="text" placeholder="Search for Car" name="car_name">
+                  <button type= "Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
               </ul>
             </div>
           </div>

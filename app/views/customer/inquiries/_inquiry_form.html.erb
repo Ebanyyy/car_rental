@@ -1,4 +1,5 @@
-<section class="container">
+<section class="container w-50 bg-secondary rounded-5 p-5">
+
 	<h3>New Message</h3>
 	<br>
 	<%= form_with model: [:customer, @inquiry] do |f|%>
@@ -20,6 +21,6 @@
 		<%= f.submit 'Send' %>
 	</div>
 	<%end%>
-</section>
 
+</section>
 

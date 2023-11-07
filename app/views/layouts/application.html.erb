@@ -55,11 +55,13 @@
               <%= link_to 'HOW TO BOOK', howtobook_path, class: 'no-underline' %>
               <%= link_to 'ABOUT', about_path, class: 'no-underline' %>
               <%= link_to 'DIRECT MESSAGE', new_customer_inquiry_path, class: 'no-underline' %>
+
               <form action="<%= customer_cars_path %>">
                 <input type="text" placeholder="Search for Car" name="car_name">
                 <button type= "Search"><i class="fa-solid fa-magnifying-glass"></i></button>
               </form>
             </div>
+            
           </div>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">

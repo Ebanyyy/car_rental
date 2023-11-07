@@ -1,27 +1,46 @@
-<%= form_with model: [:admin, @car] do |f| %>
-	
-	<%= f.label :car_name%>
-	<p><%= f.text_field :car_name %></p>
-	
-	<%= f.label :photos%>
-	<p><%= f.file_field :photos, multiple: true %></p>
-	
-	<%= f.label :category%>
-	<p><%= f.collection_select(:category, Car::CATEGORIES, :to_s, :humanize, {include_blank: "Select Catagory"}) %></p>
-	
-	<%= f.label :capacity%>
-	<p><%= f.number_field :capacity %></p>
+<section class="container w-50 bg-secondary border border-5 rounded-5 p-5">
 
-	<%= f.label :description, class:"form-label"%>
-	<p><%= f.text_area :description, class:"form-control" %></p>
-	
-	<%= f.label :price%>
-	<p><%= f.text_field :price%></p>
-	
-	<%= f.label :available%>
-	<p><%= f.check_box :available%></p>
-	<br>
+	<%= form_with model: [:admin, @car] do |f| %>
 
-	<%= f.submit 'Submit' %>
+		<div class="mx-5">
+			<%= f.label :car_name, class:"form-label" %>
+			<p><%= f.text_field :car_name, class:"form-control" %></p>
+		</div>
 
-<%end%>
+		<div class="mx-5">
+			<%= f.label :photos, class:"form-label" %>
+			<p><%= f.file_field :photos, multiple:true %></p>
+		</div>
+
+		<div class="mx-5">
+			<%= f.label :category, class:"form-label" %>
+			<p><%= f.collection_select(:category, Car::CATEGORIES, :to_s, :humanize, {include_blank: "Select Catagory"}) %></p>
+		</div>	
+		
+		<div class="mx-5">
+			<%= f.label :capacity, class:"form-label" %>
+			<p><%= f.number_field :capacity, class:"rounded-2" %></p>
+		</div>
+
+		<div class="mx-5">
+			<%= f.label :description, class:"form-label" %>
+			<p><%= f.text_area :description, class:"form-control" %></p>
+		</div>
+
+		<div class="mx-5">
+			<%= f.label :price %>
+			<p><%= f.text_field :price, class:"rounded-2" %></p>
+		</div>
+
+		<div class="mx-5">
+			<%= f.label :available %>
+			<p><%= f.check_box :available %></p>
+		</div>
+
+		<div class="mx-5">
+			<%= f.submit 'Add', class:"rounded-2" %>
+		</div>
+
+	<%end%>
+
+</section>
