@@ -31,6 +31,18 @@ end
 
 group :development do
   gem "web-console"
+
+    # Deployment
+  gem 'capistrano', '< 5'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma', '< 5'
+  gem 'capistrano3-nginx'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rails-tail-log'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rake', require: false
 end
 
 group :test do

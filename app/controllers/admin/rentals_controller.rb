@@ -8,4 +8,10 @@ class Admin::RentalsController < BaseController
 	def show
 		@rental = Rental.find(params[:id])
 	end
+
+	def destroy
+		Rental.destroy(params[:id])
+		redirect_to admin_rentals_path
+	end
+
 end
