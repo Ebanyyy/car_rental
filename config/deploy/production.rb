@@ -1,5 +1,5 @@
 set :stage,           :production
-set :rails_env,       :productiom
+set :rails_env,       :production
 set :branch,          :main
 
 set :application,     'car_rental'
