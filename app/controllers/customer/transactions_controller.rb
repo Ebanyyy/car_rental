@@ -15,4 +15,6 @@ class Customer::TransactionsController < ApplicationController
       }
     )
   end
+
+  
 end

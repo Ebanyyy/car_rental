@@ -31,53 +31,35 @@
 	</table>
 </div>
 
+<div class="container">
 
+	<div id="dropin-wrapper">
+	  <div id="checkout-message"></div>
+	  <div id="dropin-container"></div>
+	  <button id="submit-button">Submit payment</button>
+	</div>
+	<script>
+	  var button = document.querySelector('#submit-button');
 
+	  braintree.dropin.create({
+	    // Insert your tokenization key here
+	    authorization: "<%= @client_token%>",
+	    container: '#dropin-container'
+	  }, function (createErr, instance) {
+	    button.addEventListener('click', function () {
+	      instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+	        // When the user clicks on the 'Submit payment' button this code will send the
+	        // encrypted payment information in a variable called a payment method nonce
+	        $.ajax({
+	          type: 'POST',
+	          url: '/checkout',
+	          data: {'payment_method_nonce': payload.nonce}
+	        }).done(function(result) {
 
-<h2><%= @rental.car.car_name%></h2>
+	        });
+	      });
+	    });
+	  });
+	</script>
 
-<h5>Pick up</h5>
-<p><strong>Date: </strong><%= @rental.pick_up%></p>
-<p>Location: <%= @rental.pick_up_location%></p>
-
-<br>
-
-<h5>Drop off</h5>
-<p>Date: <%= @rental.drop_off%></p>
-<p>Location: <%= @rental.drop_off_location%></p>
-
-<h5>Rental Details</h5>
-<p>Duration: <%= @rental.duration%></p>
-<p>Total price: <%= @rental.total_price%></p>
-<p>Status: <%= @rental.status%>
-
-<div class="form-container radius-box glassy-bg small-10 small-centered medium-8 large-6 columns">
-  <h2 class="mbs">New Transaction</h2>
-  <%= form_tag customer_transactions_path do%>
-    <p>Please enter your payment details:</p>
-    <div id="dropin"></div>
-    <%=submit_tag "Pay", class: "button mt1" %>
-  <%end%>
 </div>
-
-
-<%=link_to "Checkout", new_customer_transaction_path, class: "button"%>
-
-<div id="dropin-container"></div>
-<button id="submit-button" class="button button--small button--green">Purchase</button>
-
-  <script type="text/javascript">
-  	var button = document.querySelector('#submit-button');
-
-braintree.dropin.create({
-  authorization: "<%= @client_token %>",
-  selector: '#dropin-container'
-}, function (err, instance) {
-  button.addEventListener('click', function () {
-    instance.requestPaymentMethod(function (err, payload) {
-      // Submit payload.nonce to your server
-    });
-  })
-});
-    // call 'braintree.dropin.create' code here
-  </script>

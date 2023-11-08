@@ -12,5 +12,7 @@ class Customer::HomeController < ApplicationController
 	def howtobook
 	end
 
+	
+
 
 end

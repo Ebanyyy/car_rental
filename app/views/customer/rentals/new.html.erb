@@ -6,7 +6,7 @@
 		
 		<%= f.label :pick_up_location, class: "form-label" %>
 		<p><%= f.text_field :pick_up_location, class: "form-control" %></p>
-		<p><%= f.datetime_field :pick_up, class: "rounded-2" %></p>
+		<p><%= f.datetime_field :pick_up, selected: Date.today, min: Date.today, max: 1.year.from_now, class: "rounded-2" %></p>
 	</div>
 
 	<br>
@@ -16,7 +16,7 @@
 
 		<%= f.label :drop_off_location, class: "form-label" %>
 		<p><%= f.text_field :drop_off_location, class: "form-control" %></p>
-		<p><%= f.datetime_field :drop_off, class: "rounded-2" %></p>
+		<p><%= f.datetime_field :drop_off, selected: Date.today, min: Date.today, max: 1.year.from_now, class: "rounded-2" %></p>
 	</div>
 
 	<br>

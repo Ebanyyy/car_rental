@@ -14,6 +14,35 @@ class Customer::RentalsController < ApplicationController
   		@client_token = gateway.client_token.generate
 	end
 
+	def checkout
+		gateway = Braintree::Gateway.new(
+		  :environment => :sandbox,
+		  :merchant_id => 'pxwg9rygz7qhrpy2',
+		  :public_key => '2tysx9hs82ckkvdh',
+		  :private_key => 'eb0507b5a40f28cea9f027e81fb66d9d',
+		)
+		 nonce_from_the_client = params[:payment_method_nonce]
+
+		result = gateway.transaction.sale(
+		  :amount => "10.00",
+		  :payment_method_nonce => nonce_from_the_client,
+		  :options => {
+		    :submit_for_settlement => true
+		  }
+		)
+
+		if result.success?
+			puts "success!: #{result.transaction.id}"
+		elsif result.transaction
+			puts "Error processing transaction:"
+			puts "	code: #{result.transaction.processor_response_code}"
+			puts "	text: #{result.transaction.processor_response_text}" 
+		else
+			p result.errors 
+		end
+	end
+
+
 	def new
 		@car = Car.find_by(id: params[:car_id])
 		@rental = Rental.new

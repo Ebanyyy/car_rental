@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'transactions/new'
   get 'howtobook', to: 'customer/home#howtobook'
   get 'about', to: 'customer/home#about'
+  post 'checkout', to: 'customer/rentals#checkout'
 
   root 'customer/home#index'
 
