@@ -124,9 +124,10 @@ GEM
       sshkit (~> 1.2)
     capistrano3-nginx (3.0.4)
       capistrano (~> 3.0)
-    capistrano3-puma (1.2.1)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
+    capistrano3-puma (4.0.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 4.0)
     capybara (3.39.2)
       addressable
       matrix
