@@ -36,15 +36,11 @@
 <br>
 
 <% if user_signed_in? && current_user.is_admin? %>
-	<%=link_to 'Edit', edit_admin_car_path(@car), class: "btn btn-outline-secondary" %>
+	<%=link_to 'Edit', edit_admin_car_path(@car)%>
 	<br>
-	<%= button_to admin_car_path(rental), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-	 class: "btn btn-primary" do %>
-		<i class="fa-regular fa-trash-can"></i>
-	<% end %>
+	<%= button_to 'Delete', admin_car_path(@car), method: :delete,
+		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
 <% end %>
-
-
 
 <br>
 
