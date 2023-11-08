@@ -39,8 +39,13 @@
 	<%=link_to 'Edit', edit_admin_car_path(@car)%>
 	<br>
 	<%= button_to 'Delete', admin_car_path(@car), method: :delete,
-		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+		data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-warning" do %>
+		<i class="fa-regular da-trash-can"></i>
 <% end %>
+
+	      <%= button_to admin_rental_path(rental), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary" do %>
+			<i class="fa-regular fa-trash-can"></i>
+		<% end %>
 
 <br>
 
