@@ -1,157 +1,76 @@
-<div class="wrapper">
-  <div class="response container">
-    <div class="content">
-      <% if @result %>
+<div class="container-center">
+  <div class="wrapper">
+    <div class="response container">
+      <div class="content">
+        <% if @result %>
 
-        <h1><%= @result[:header] %></h1>
-        <section>
-          <p><%= @result[:message] %></p>
+          <h1><%= @result[:header] %></h1>
+          <section>
+            <p><%= @result[:message] %></p>
+          </section>
+        <% else %>
+          <section>
+            <p>Test another transaction.</p>
         </section>
-      <% else %>
-        <section>
-          <p>Test another transaction or see the Braintree API response.</p>
-      </section>
 
-      <% end %>
+        <% end %>
 
-      <section>
-        <a class="button primary back" href="/checkouts/new">
-          <span>Test Another Transaction</span>
-        </a>
-      </section>
+      </div>
     </div>
   </div>
 </div>
 
-<aside class="drawer dark">
-  <header>
-    <div class="content compact">
-      <a href="https://developers.braintreepayments.com" class="braintree" target="_blank">Braintree</a>
-      <h3>API Response</h3>
+<section class="vh-100" style="background-color: #35558a;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 text-center">
+      <div class="col">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-light btn-lg" data-mdb-toggle="modal"
+          data-mdb-target="#exampleModal">
+          <i class="fas fa-info me-2"></i> Click here to see details
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header border-bottom-0">
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-start text-black p-4">
+                <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">Your id_no: <%= @transaction.id %></h5>
+                <h4 class="mb-5" style="color: #35558a;">Thanks You</h4>
+                <p class="mb-0" style="color: #35558a;">Payment summary</p>
+                <hr class="mt-2 mb-4"
+                  style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
+
+                <div class="d-flex justify-content-between">
+                  <p class="small mb-0">Created at:</p>
+                  <p class="small mb-0"><%= @transaction.created_at %></p>
+                </div>
+
+                <div class="d-flex justify-content-between pb-1">
+                  <p class="small">Updated at:</p>
+                  <p class="small"><%= @transaction.updated_at %></p>
+                </div>
+
+                 <div class="d-flex justify-content-between pb-1">
+                  <p class="small">Status</p>
+                  <p class="small"><%= @transaction.status %>></p>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <p class="fw-bold">Total</p>
+                  <p class="fw-bold" style="color: #35558a;"><%= @transaction.amount %></p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </header>
-
-  <article class="content compact">
-    <section>
-      <h5>Transaction</h5>
-
-      <table cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr>
-            <th>id</th>
-            <td><%= @transaction.id %></td>
-          </tr>
-          <tr>
-            <th>type</th>
-            <td><%= @transaction.type %></td>
-          </tr>
-          <tr>
-            <th>amount</th>
-            <td><%= @transaction.amount %></td>
-          </tr>
-          <tr>
-            <th>status</th>
-            <td><%= @transaction.status %></td>
-          </tr>
-          <tr>
-            <th>created_at</th>
-            <td><%= @transaction.created_at %></td>
-          </tr>
-          <tr>
-            <th>updated_at</th>
-            <td><%= @transaction.updated_at %></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h5>Payment</h5>
-
-      <table cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr>
-            <th>token</th>
-            <td><%= @transaction.credit_card_details.token %></td>
-          </tr>
-          <tr>
-            <th>bin</th>
-            <td><%= @transaction.credit_card_details.bin %></td>
-          </tr>
-          <tr>
-            <th>last_4</th>
-            <td><%= @transaction.credit_card_details.last_4 %></td>
-          </tr>
-          <tr>
-            <th>card_type</th>
-            <td><%= @transaction.credit_card_details.card_type %></td>
-          </tr>
-          <tr>
-            <th>expiration_date</th>
-            <td><%= @transaction.credit_card_details.expiration_date %></td>
-          </tr>
-          <tr>
-            <th>cardholder_name</th>
-            <td><%= @transaction.credit_card_details.cardholder_name %></td>
-          </tr>
-          <tr>
-            <th>customer_location</th>
-            <td><%= @transaction.credit_card_details.customer_location %></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <% if @transaction.customer_details.id %>
-      <section>
-        <h5>Customer</h5>
-
-        <table cellpadding="0" cellspacing="0">
-          <tbody>
-            <tr>
-              <th>id</th>
-              <td><%= @transaction.customer_details.id %></td>
-            </tr>
-            <tr>
-              <th>first_name</th>
-              <td><%= @transaction.customer_details.first_name %></td>
-            </tr>
-            <tr>
-              <th>last_name</th>
-              <td><%= @transaction.customer_details.last_name %></td>
-            </tr>
-            <tr>
-              <th>email</th>
-              <td><%= @transaction.customer_details.email %></td>
-            </tr>
-            <tr>
-              <th>company</th>
-              <td><%= @transaction.customer_details.company %></td>
-            </tr>
-            <tr>
-              <th>website</th>
-              <td><%= @transaction.customer_details.website %></td>
-            </tr>
-            <tr>
-              <th>phone</th>
-              <td><%= @transaction.customer_details.phone %></td>
-            </tr>
-            <tr>
-              <th>fax</th>
-              <td><%= @transaction.customer_details.fax %></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    <% end %>
-
-    <section>
-      <p class="center small">Integrate with the Braintree SDK for a secure and seamless checkout</p>
-    </section>
-    <section>
-      <a class="button secondary full" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">
-        <span>See the Docs</span>
-      </a>
-    </section>
-  </article>
-</aside>
+  </div>
+</section>
