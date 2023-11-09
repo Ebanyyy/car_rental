@@ -11,6 +11,7 @@ class Customer::CheckoutsController < ApplicationController
   
     def new
       @client_token = gateway.client_token.generate
+      @amount = params[:total_price]
     end
   
     def show
@@ -31,11 +32,11 @@ class Customer::CheckoutsController < ApplicationController
       )
   
       if result.success? || result.transaction
-        redirect_to checkout_path(result.transaction.id)
+        redirect_to customer_checkout_path(result.transaction.id)
       else
         error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
         flash[:error] = error_messages
-        redirect_to new_checkout_path
+        redirect_to new_customer_checkout_path
       end
     end
   
