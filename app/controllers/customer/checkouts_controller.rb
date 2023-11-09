@@ -1,4 +1,4 @@
-class CheckoutsController < ApplicationController
+class Customer::CheckoutsController < ApplicationController
     TRANSACTION_SUCCESS_STATUSES = [
       Braintree::Transaction::Status::Authorizing,
       Braintree::Transaction::Status::Authorized,
