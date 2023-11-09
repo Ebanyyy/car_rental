@@ -16,7 +16,7 @@ class Customer::CheckoutsController < ApplicationController
     end
   
     def show
-      @car = Car.find(params[:car_id])
+      @rental = Rental.find(params[:rental_id])
       @transaction = gateway.transaction.find(params[:id])
       @result = _create_result_hash(@transaction)
     end
