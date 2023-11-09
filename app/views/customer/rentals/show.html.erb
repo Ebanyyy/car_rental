@@ -30,3 +30,5 @@
 	  </tbody>
 	</table>
 </div>
+
+<%= link_to 'Proceed To Payment', new_customer_checkout_path(total: @rental.total_price), method: :get, class: "btn btn-success" %>
