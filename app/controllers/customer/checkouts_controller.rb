@@ -11,7 +11,8 @@ class Customer::CheckoutsController < ApplicationController
   
     def new
       @client_token = gateway.client_token.generate
-      @amount = params[:total_price]
+      @rental = params[:rental]
+      @amount = @rental.total_price
     end
   
     def show
@@ -23,6 +24,8 @@ class Customer::CheckoutsController < ApplicationController
       amount = params["amount"] # In production you should not take amounts directly from clients
       nonce = params["payment_method_nonce"]
   
+      @rental = Rental.find(params[:rental_id])
+
       result = gateway.transaction.sale(
         amount: amount,
         payment_method_nonce: nonce,
@@ -33,6 +36,7 @@ class Customer::CheckoutsController < ApplicationController
   
       if result.success? || result.transaction
         redirect_to customer_checkout_path(result.transaction.id)
+        @rental.update(status: "success")
       else
         error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
         flash[:error] = error_messages

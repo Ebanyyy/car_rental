@@ -24,6 +24,7 @@
         </section>
 
         <input type="hidden" id="nonce" name="payment_method_nonce" />
+        <input type="hidden" id="rental_id" name="rental_id" value="<%= @rental.id %>" />
         <button class="button" type="submit"><span>Continue</span></button>
       <% end %>
 
