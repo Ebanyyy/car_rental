@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'transactions/new'
+  get 'checkouts', to: 'customer/checkouts#new'
   get 'howtobook', to: 'customer/home#howtobook'
   get 'about', to: 'customer/home#about'
-  post 'checkout', to: 'customer/rentals#checkout'
 
   root 'customer/home#index'
 
@@ -21,6 +20,6 @@ Rails.application.routes.draw do
 
     resources :rentals
     resources :inquiries
-    resources :transactions, only: [:new, :create]
+    resources :checkouts,  only: [:new, :create, :show]
   end
 end
