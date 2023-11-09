@@ -84,7 +84,7 @@
 				<div class="row">
 						<% @car.photos.each do |photo| %>
 							<div class="col-lg-5 col-md-5 col-sm-6">
-								<div class="white-box text-center"><%= image_tag photo, class: "img-responsive" %></div>
+								<div class="white-box text-center"><%= image_tag photo, class: "img-fluid d-block w-100" %></div>
 							</div>
 						<% end %>
 
@@ -156,6 +156,8 @@
 				<% else %>
 					No review.
 				<% end %>
+
+				<%= link_to 'Add Review', new_customer_car_review_path(car_id: @car.id)%>
 			</div>
       </div>
     </div>
