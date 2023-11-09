@@ -1,3 +1,4 @@
+<section>
 <div class="wrapper">
   <div class="response container">
     <div class="content">
@@ -17,8 +18,10 @@
     </div>
   </div>
 </div>
+</section>
 
-<aside class="drawer dark">
+<section class="drawer dark">
+
   <article class="content compact">
     <section>
       <h5>Transaction</h5>
@@ -53,53 +56,85 @@
       </table>
     </section>
 
+    <section>
+      <h5>Payment</h5>
+
+      <table cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <th>token</th>
+            <td><%= @transaction.credit_card_details.token %></td>
+          </tr>
+          <tr>
+            <th>bin</th>
+            <td><%= @transaction.credit_card_details.bin %></td>
+          </tr>
+          <tr>
+            <th>last_4</th>
+            <td><%= @transaction.credit_card_details.last_4 %></td>
+          </tr>
+          <tr>
+            <th>card_type</th>
+            <td><%= @transaction.credit_card_details.card_type %></td>
+          </tr>
+          <tr>
+            <th>expiration_date</th>
+            <td><%= @transaction.credit_card_details.expiration_date %></td>
+          </tr>
+          <tr>
+            <th>cardholder_name</th>
+            <td><%= @transaction.credit_card_details.cardholder_name %></td>
+          </tr>
+          <tr>
+            <th>customer_location</th>
+            <td><%= @transaction.credit_card_details.customer_location %></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <% if @transaction.customer_details.id %>
+      <section>
+        <h5>Customer</h5>
+
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <th>id</th>
+              <td><%= @transaction.customer_details.id %></td>
+            </tr>
+            <tr>
+              <th>first_name</th>
+              <td><%= @transaction.customer_details.first_name %></td>
+            </tr>
+            <tr>
+              <th>last_name</th>
+              <td><%= @transaction.customer_details.last_name %></td>
+            </tr>
+            <tr>
+              <th>email</th>
+              <td><%= @transaction.customer_details.email %></td>
+            </tr>
+            <tr>
+              <th>company</th>
+              <td><%= @transaction.customer_details.company %></td>
+            </tr>
+            <tr>
+              <th>website</th>
+              <td><%= @transaction.customer_details.website %></td>
+            </tr>
+            <tr>
+              <th>phone</th>
+              <td><%= @transaction.customer_details.phone %></td>
+            </tr>
+            <tr>
+              <th>fax</th>
+              <td><%= @transaction.customer_details.fax %></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    <% end %>
+
   </article>
-</aside>
-
-
-<section class="h-100 h-custom" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-8 col-xl-6">
-        <div class="card border-top border-bottom border-3" style="border-color: #f37a27 !important;">
-          <div class="card-body p-5">
-
-            <p class="lead fw-bold mb-5" style="color: #f37a27;">Your Rental Reciept</p>
-
-            <div class="row">
-              <div class="col mb-3">
-                <p class="small text-muted mb-1">Created at</p>
-                <p><%= @transaction.created_at %></p>
-              </div>
-              <div class="col mb-3">
-                <p class="small text-muted mb-1">Id No.</p>
-                <p><%= @transaction.id %></p>
-              </div>
-            </div>
-
-            <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
-              <div class="row">
-                <div class="col-md-8 col-lg-9">
-                  <p><%= @rental.car_id%></p>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                  <p><%= @rental.total_price%></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row my-4">
-              <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-                <p class="lead fw-bold mb-0" style="color: #f37a27;"><%= @rental.total_price%></p>
-              </div>
-            </div>
-
-            <p class="mt-4 pt-2 mb-0">Want any help? <a href="#!" style="color: #f37a27;">Please contact
-                us</a></p>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
