@@ -16,7 +16,6 @@ class Customer::CheckoutsController < ApplicationController
     end
   
     def show
-      @rental = Rental.find(params[:rental_id])
       @transaction = gateway.transaction.find(params[:id])
       @result = _create_result_hash(@transaction)
     end
