@@ -17,7 +17,7 @@
 								Price: RM <%= @car.price %><small class="text-success">per day</small>
 							</h2>
 							<% if user_signed_in? && current_user.is_customer? %>
-								<button type="button" class="btn btn-success btn-rounded text-light">
+								<button type="button" class="btn btn-outline-success btn-rounded">
 								<%= link_to 'Rent Car', new_customer_rental_path(car_id: @car.id)%>
 								</button>
 							<%else%>

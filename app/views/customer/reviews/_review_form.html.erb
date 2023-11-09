@@ -1,49 +1,22 @@
-<%= form_with model: [:customer, @car, @review] do |f| %>
+<div class="container my-5 py-5 text-dark">
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-10 col-lg-8 col-xl-6">
+		<%= form_with model: [:customer, @car, @review] do |f| %>
 
-	<%= f.label :comment%>
-	<p><%= f.text_area :comment%></p>
+			<%= f.label :comment%>
+			<p><%= f.text_area :comment%></p>
 
-	<br>
+			<br>
 
-	<%= f.label :rating%>
-	<p><%= f.number_field :rating, in: 1..5 %></p>
+			<%= f.label :rating%>
+			<p><%= f.number_field :rating, in: 1..5 %></p>
 
-	<br>
+			<br>
 
-	<%= f.hidden_field :car_id, value: @car.id %>
-	<%= f.submit %>
-<% end %>
+			<%= f.hidden_field :car_id, value: @car.id %>
+			<%= f.submit %>
+		<% end %>
+		</div>
+	</div>
+</div>
 
-<section class="container">
-	<form>
-	<%= form_with model: [:customer, @car, @review] do |f| %>
-
-	  <div class="field form-group">
-	  <%= f.label :rating, "What's your overall rating?" %>
-	    <div class="rating">
-	      <%= f.collection_radio_buttons(:rating, [[5],[4],[3],[2],[1]], :first, :last) do |star| %>
-	        <%= star.radio_button %>
-	        <%= star.label(class: "text-white") %>
-	      <% end %>
-	    </div>
-	  </div>
-
-	  <br>
-
-	  <div class="field form-group">
-	    <%= f.label :comment, "Leave a review" %>
-	    <%= f.text_area :comment, class: "form-control",
-	                        placeholder: "Review..." %>
-	  </div>
-
-	  <br>
-
-	  <!-- Submit button -->
-	  <%= f.hidden_field :car_id, value: @car.id %>
-	  <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
-
-	<% end %>
-	</form>
-
-
-</section>
