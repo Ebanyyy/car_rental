@@ -5,6 +5,7 @@
 				<div class="card-body p-4">
 					<div class="d-flex flex-start w-100">
 						<div class="w-100">
+							<h4>Add a review</h4>
 							<%= form_with model: [:customer, @car, @review] do |f| %>
 								<div class="form-outline">
 									<%= f.label :comment, class: "form-label" %>
@@ -18,7 +19,7 @@
 									<br>
 
 									<%= f.hidden_field :car_id, value: @car.id %>
-									<%= f.submit %>
+									<button type="button" class="btn btn-success"><%= f.submit%></button>
 								</div>
 							<% end %>
 						</div>
