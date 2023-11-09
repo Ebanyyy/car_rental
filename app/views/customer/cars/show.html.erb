@@ -64,7 +64,7 @@
 				<% end %>
 				<br>
 			</li>
-				<% end %>
+			<% end %>
 		</ul>
 	<%else%>
 		No review.
@@ -82,16 +82,19 @@
             <h3 class="card-title"><%= @car.car_name %></h3>
 			<% if @car.photos.attached? %>
 				<div class="row">
-						<div class="col-lg-5 col-md-5 col-sm-6">
-							<div class="white-box text-center"><img src="https://www.bootdey.com/image/430x600/00CED1/000000" class="img-responsive"></div>
-						</div>
+						<% @car.photos.each do |photo| %>
+							<div class="col-lg-5 col-md-5 col-sm-6">
+								<div class="white-box text-center"><%= image_tag photo, class: "img-fluid d-block w-100", class: "img-responsive" %></div>
+							</div>
+						<% end %>
+
 						<div class="col-lg-7 col-md-7 col-sm-6">
 							<h4 class="box-title mt-5">Car description</h4>
 								<p><%= @car.description%></p>
 							<h2 class="mt-5">
 								Price: RM <%= @car.price %><small class="text-success">per day</small>
 							</h2>
-							<% if user_signed_in? %>
+							<% if user_signed_in? && current_user.is_customer? %>
 								<button type="button" class="btn btn-success btn-rounded">
 								<%= link_to 'Rent Car', new_customer_rental_path(car_id: @car.id)%>
 								</button>
@@ -119,34 +122,41 @@
   <div class="container my-5 py-5 text-dark">
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10 col-xl-8">
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="d-flex flex-start">
-              <div class="w-100">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h6 class="text-primary fw-bold mb-0">
-                    lara_stewart
-                    <span class="text-dark ms-2">Hmm, This poster looks cool</span>
-                  </h6>
-                  <p class="mb-0">2 days ago</p>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <p class="small mb-0" style="color: #aaa;">
-                    <a href="#!" class="link-grey">Remove</a> •
-                    <a href="#!" class="link-grey">Reply</a> •
-                    <a href="#!" class="link-grey">Translate</a>
-                  </p>
-                  <div class="d-flex flex-row">
-                    <i class="fas fa-star text-warning me-2"></i>
-                    <i class="far fa-check-circle" style="color: #aaa;"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
+		<h4 class="text-dark mb-0">Reviews</h4>
+			<div class="card mb-3">
+				<%if @car.reviews.any?%>
+					<% @car.reviews.each do |review|%>
+						<div class="card-body">
+							<div class="d-flex flex-start">
+								<div class="w-100">
+									<div class="d-flex justify-content-between align-items-center mb-3">
+									<h6 class="text-primary fw-bold mb-0">
+										<%= review.user.email%>
+										<span class="text-dark ms-2"><%= review.comment%></span>
+									</h6>
+									<p class="mb-0"><%= time_ago_in_words(review.created_at)%></p>
+									</div>
+										<div class="d-flex justify-content-between align-items-center">
+										<p class="small mb-0" style="color: #aaa;">
+											<% if user_signed_in? && current_user.is_customer? %>
+												<%= link_to 'Edit', edit_customer_car_review_path(@car, review)%>
+											<br>
+												<%= link_to 'Delete', customer_car_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+											<% end %>
+										</p>
+											<div class="d-flex flex-row">
+												<p><%= review.rating%>/5<p>
+												<i class="fas fa-star text-warning me-2"></i>
+											</div>
+										</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				<% else %>
+					No review.
+				<% end %>
+			</div>
       </div>
     </div>
   </div>
