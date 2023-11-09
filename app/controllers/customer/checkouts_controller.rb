@@ -11,7 +11,7 @@ class Customer::CheckoutsController < ApplicationController
   
     def new
       @client_token = gateway.client_token.generate
-      @rental = params[:rental]
+      @rental = Rental.find(params[:rental])
       @amount = @rental.total_price
     end
   
