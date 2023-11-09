@@ -37,53 +37,49 @@
 			<% end %>
         </div>
     </div>
-</div>
-
-
-<section style="background-color: #f7f6f6;">
-  <div class="container my-5 py-5 text-dark">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-12 col-lg-10 col-xl-8">
-		<h4 class="text-dark mb-0">Reviews</h4>
-			<div class="card mb-3">
-				<%if @car.reviews.any?%>
-					<% @car.reviews.each do |review|%>
-						<div class="card-body">
-							<div class="d-flex flex-start">
-								<div class="w-100">
-									<div class="d-flex justify-content-between align-items-center mb-3">
-									<h6 class="text-primary fw-bold mb-0">
-										<%= review.user.email%>
-										<span class="text-dark ms-2"><%= review.comment%></span>
-									</h6>
-									<p class="mb-0"><%= time_ago_in_words(review.created_at)%></p>
-									</div>
-										<div class="d-flex justify-content-between align-items-center">
-										<p class="small mb-0" style="color: #aaa;">
-											<% if user_signed_in? && current_user.is_customer? %>
-												<%= link_to 'Edit', edit_customer_car_review_path(@car, review)%>
-											<br>
-												<%= link_to 'Delete', customer_car_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-											<% end %>
-										</p>
-											<div class="d-flex flex-row">
-												<p><%= review.rating%>/5<p>
-												<i class="fas fa-star text-warning me-2"></i>
+	<div class="container my-5 py-5 text-dark">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-12 col-lg-10 col-xl-8">
+				<h4 class="text-dark mb-0">Reviews</h4>
+					<div class="card mb-3">
+						<%if @car.reviews.any?%>
+							<% @car.reviews.each do |review|%>
+								<div class="card-body">
+									<div class="d-flex flex-start">
+										<div class="w-100">
+											<div class="d-flex justify-content-between align-items-center mb-3">
+											<h6 class="text-primary fw-bold mb-0">
+												<%= review.user.email%>
+												<span class="text-dark ms-2"><%= review.comment%></span>
+											</h6>
+											<p class="mb-0"><%= time_ago_in_words(review.created_at)%></p>
 											</div>
+												<div class="d-flex justify-content-between align-items-center">
+												<p class="small mb-0" style="color: #aaa;">
+													<% if user_signed_in? && current_user.is_customer? %>
+														<%= link_to 'Edit', edit_customer_car_review_path(@car, review)%>
+													<br>
+														<%= link_to 'Delete', customer_car_review_path(@car, review), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+													<% end %>
+												</p>
+													<div class="d-flex flex-row">
+														<p><%= review.rating%>/5<p>
+														<i class="fas fa-star text-warning me-2"></i>
+													</div>
+												</div>
 										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					<% end %>
-				<% else %>
-					No review.
-				<% end %>
-				<button type="button" class="btn btn-outline-secondary btn-rounded">
-				<%= link_to 'Add Review', new_customer_car_review_path(car_id: @car.id)%>
-				</button>
-				
+							<% end %>
+						<% else %>
+							No review.
+						<% end %>
+						<button type="button" class="btn btn-outline-secondary btn-rounded">
+						<%= link_to 'Add Review', new_customer_car_review_path(car_id: @car.id)%>
+						</button>
+						
+					</div>
 			</div>
-      </div>
-    </div>
-  </div>
-</section>
+		</div>
+	</div>
+</div>
