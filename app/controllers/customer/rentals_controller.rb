@@ -2,7 +2,7 @@ class Customer::RentalsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@rentals = Rental.all
+		@rentals = current_user.rentals
 	end
 
 	def show
