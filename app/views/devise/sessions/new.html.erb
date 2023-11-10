@@ -7,12 +7,14 @@
       <h1 class="h2 mb-3 fw-normal">Please sign in</h1>
 
     
-      <div class="form-floating">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+      <div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
       </div>
 
-      <div class="form-floating">
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+      <br>
+
+      <div>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control" %>
       </div>
 
     <% if devise_mapping.rememberable? %>
