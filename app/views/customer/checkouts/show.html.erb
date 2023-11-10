@@ -19,41 +19,44 @@
   </div>
 </div>
 
+<div class="card">
+  <div class="card-body mx-4">
+    <div class="container">
+      <p class="my-5 mx-5" style="font-size: 30px;">Your Payment</p>
+      <div class="row">
+        <ul class="list-unstyled">
+          <li class="text-muted mt-1"><span class="text-black">Transaction id</span> <%= @transaction.id %></li>
+          <li class="text-muted mt-1"><span class="text-black">Created at</span> <%= @transaction.created_at %></li>
+          <li class="text-muted mt-1"><span class="text-black">Updated at</span> <%= @transaction.updated_at %></li>
+          <li class="text-muted mt-1"><span class="text-black">Transaction type</span> <%= @transaction.type %></li>
+        </ul>
+        <hr>
+        <div class="col-xl-10">
+          <p>Status</p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end"><%= @transaction.status %>
+          </p>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-xl-10">
+          <p>Amount</p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end"><%= @transaction.amount %>
+          </p>
+        </div>
+        <hr>
+      </div>
+        <div class="col-xl-12">
+          <p class="float-end fw-bold">Total: <%= @transaction.amount %>
+          </p>
+        </div>
+        <hr style="border: 2px solid black;">
+      </div>
 
-
-<article class="content content">
-  <section class="container container-fluid m-5">
-    <h5>Transaction</h5>
-
-      <table cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr>
-            <th>id</th>
-            <td><%= @transaction.id %></td>
-          </tr>
-          <tr>
-            <th>type</th>
-            <td><%= @transaction.type %></td>
-          </tr>
-          <tr>
-            <th>amount</th>
-            <td><%= @transaction.amount %></td>
-          </tr>
-          <tr>
-            <th>status</th>
-            <td><%= @transaction.status %></td>
-          </tr>
-          <tr>
-            <th>created_at</th>
-            <td><%= @transaction.created_at %></td>
-          </tr>
-          <tr>
-            <th>updated_at</th>
-            <td><%= @transaction.updated_at %></td>
-          </tr>
-        </tbody>
-      </table>
-  </section>
-
-</article>
-
+    </div>
+  </div>
+</div>
