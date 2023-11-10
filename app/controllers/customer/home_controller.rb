@@ -8,11 +8,4 @@ class Customer::HomeController < ApplicationController
 			@cars = Car.all
 		end
 	end
-
-	def howtobook
-	end
-
-	
-
-
 end

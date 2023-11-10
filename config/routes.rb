@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'checkouts', to: 'customer/checkouts#new'
-  get 'howtobook', to: 'customer/home#howtobook'
   get 'about', to: 'customer/home#about'
 
   root 'customer/home#index'
