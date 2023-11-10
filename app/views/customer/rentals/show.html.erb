@@ -25,13 +25,19 @@
 	      <td><%= @rental.duration%></td>
 	      <td><%= @rental.total_price%></td>
 	      <td><%= @rental.status%></td>
-	      <td><%= button_to "Cancel", customer_rental_path(@rental, status: "cancel"), method: :put, class: "btn btn-primary"%></td>
+	      <td>
+			<%= button_to customer_rental_path(@rental, status: "cancel"), method: :put, class: "btn btn-primary" do%>
+				<i class="fa-solid fa-xmark"></i>
+			<% end %>
+			<%= button_to new_customer_checkout_path(rental: @rental), method: :get, class: "btn btn-success", class: "btn btn-primary" do %>
+				<i class="fa-regular fa-credit-card"></i>
+			<% end %>
+		  </td>
 	    </tr>
 	  </tbody>
 	</table>
 </div>
 
-<%= link_to 'Proceed To Payment', new_customer_checkout_path(rental: @rental), method: :get, class: "btn btn-success" %>
 
 
 
