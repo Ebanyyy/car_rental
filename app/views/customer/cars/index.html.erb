@@ -1,26 +1,31 @@
 <section class="container">
-<h1>Car List</h1>
+	<br>
+	<form action="<%= customer_cars_path %>", class="text-center">
+		<input type="text" placeholder="Search for Car" name="car_name" class="rounded-3">
+		<button type= "Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+	</form>
+	<h1>Car List</h1>
 
 
-<div class="row">
-	<% if @cars.any? %>
-			<% @cars.last(6).each do |car| %>
-				<section class="col-md-4 mb-3">
-					<section class="card h-100">
-						<% if car.photos.attached? %>					
-							<%= image_tag car.photos.first, height: 300 %>
-						<% end %>				
-						<section class="card-body">
-					    	<p class="card-text"><%= car.car_name %></p> 
-					    	<p class="card-text"> RM <%= car.price %> per day</p>
-					    	<%= link_to 'See Details', customer_car_path(car), class: 'btn btn-primary' %>	
+	<div class="row">
+		<% if @cars.any? %>
+				<% @cars.last(6).each do |car| %>
+					<section class="col-md-4 mb-3">
+						<section class="card h-100">
+							<% if car.photos.attached? %>					
+								<%= image_tag car.photos.first, height: 300 %>
+							<% end %>				
+							<section class="card-body">
+								<p class="card-text"><%= car.car_name %></p> 
+								<p class="card-text"> RM <%= car.price %> per day</p>
+								<%= link_to 'See Details', customer_car_path(car), class: 'btn btn-primary' %>	
+							</section>
 						</section>
 					</section>
-				</section>
-		<% end %>
-	<%else%>
-	<p>Not found. </p>
+			<% end %>
+		<%else%>
+		<p>Not found. </p>
 
-<% end %>
+	<% end %>
 </section>
  
